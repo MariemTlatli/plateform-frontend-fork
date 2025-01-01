@@ -5,7 +5,7 @@ import {
   fetchResponseByAssignmentAndUser,
   update_Response_By_Member
 } from '@/store/Controller/ResponseController'
-import { State } from '@/store/Models/Response'
+import { State , Response } from '@/store/Models/Response'
 
 export type Actions = {
   fetchResponses: (MemberId: string) => Promise<void>

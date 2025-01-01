@@ -18,7 +18,6 @@ import {
 } from 'lucide-react'
 import { ListOrdered } from 'lucide-react'
 
-
 export default function ToolBar({ editor }) {
   if (!editor) return null
   const addImage = () => {
@@ -30,7 +29,12 @@ export default function ToolBar({ editor }) {
   const addLink = () => {
     const url = window.prompt('URL')
     if (url) {
-      editor.chain().focus().extendMarkRange('link').setLink({ href: url }).run()
+      editor
+        .chain()
+        .focus()
+        .extendMarkRange('link')
+        .setLink({ href: url })
+        .run()
     }
   }
   const removeLink = () => {
@@ -107,7 +111,7 @@ export default function ToolBar({ editor }) {
       icon: <Upload className='size-4' />,
       onClick: () => addImage(),
       pressed: editor.isActive('image')
-    }, 
+    }
     // {
     //   icon: <LinkIcon className='size-4' />,
     //   onClick: () => {
@@ -119,7 +123,6 @@ export default function ToolBar({ editor }) {
     //   },
     //   pressed: editor.isActive('link')
     // }
-
   ]
 
   return (
