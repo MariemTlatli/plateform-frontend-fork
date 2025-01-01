@@ -112,18 +112,19 @@ const Page = () => {
             Add New Assignment
           </Button>
           {currentAssignments.length > 0 ? (
-            currentAssignments.map(assignment => (
-              <AssignmentCardForInstructor
-                key={assignment._id}
-                assignment={assignment}
-                onEdit={() => handleEditAssignment(assignment._id)}
-                onDelete={() => handleDeleteAssignment(assignment._id)}
-                onOpenAssignmentModal={() => {
-                  setSelectedAssignment(assignment)
-                  setOpenAssignmentModal(true)
-                }}
-              />
-            ))
+            // currentAssignments.map(assignment => (
+            //   <AssignmentCardForInstructor
+            //     key={assignment._id}
+            //     assignment={assignment}
+            //     onEdit={() => handleEditAssignment(assignment._id)}
+            //     onDelete={() => handleDeleteAssignment(assignment._id)}
+            //     onOpenAssignmentModal={() => {
+            //       setSelectedAssignment(assignment)
+            //       setOpenAssignmentModal(true)
+            //     }}
+            //   />
+            // ))
+            <div> AssignmentCardForInstructor </div>
           ) : (
             <Typography>No assignments available</Typography>
           )}

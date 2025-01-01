@@ -51,7 +51,7 @@ const Page = () => {
                     Title: assignment.Title,
                     DueDate: assignment.DueDate,
                     description: assignment.Description,
-                    Attachments: assignment.Attachments
+                    Attachments: null
                   }}
                 />
                 {/* Pagination */}

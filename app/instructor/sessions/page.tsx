@@ -165,7 +165,7 @@ const Page = () => {
               renderRowActions={row => (
                 <Button
                   variant='outlined'
-                  onClick={() => handleEditSession(row._id)}
+                  onClick={() => handleEditSession(row._id as string)}
                 >
                   Edit
                 </Button>

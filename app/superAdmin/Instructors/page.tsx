@@ -24,7 +24,12 @@ const InstructorsTable = () => {
   const [isUpdateModalOpen, setIsUpdateModalOpen] = useState(false)
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false)
   const [selectedInstructor, setSelectedInstructor] = useState(null)
-
+  interface HeadCell {
+    id: string
+    numeric: boolean
+    disablePadding: boolean
+    label: string
+  }
   useEffect(() => {
     const loadMembers = async () => {
       await fetchInstructors()
@@ -65,7 +70,7 @@ const InstructorsTable = () => {
     await fetchInstructors()
     closeDeleteModal()
   }
-  const headCells = [
+  const headCells: HeadCell[] = [
     {
       id: '_id',
       numeric: false,
@@ -80,14 +85,14 @@ const InstructorsTable = () => {
     },
     { id: 'Email', numeric: false, disablePadding: false, label: 'Email' },
     { id: 'Adresse', numeric: false, disablePadding: false, label: 'Adresse' },
-    {
-      /*{
+    /*{
+      {
       id: 'FormattedDepartmentsIds',
       numeric: false,
       disablePadding: false,
       label: 'DepartmentIds'
-    },*/
     },
+    },*/
     {
       id: 'ImageLink',
       numeric: false,

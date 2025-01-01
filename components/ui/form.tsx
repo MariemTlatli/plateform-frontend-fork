@@ -67,19 +67,20 @@ FormControl.displayName = 'FormControl'
 
 interface FormFieldProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string
-  control: any;
-  name: string;
-  render: (props: any) => React.ReactNode;
+  control: any
+  name: string
+  render: (props: any) => React.ReactNode
 }
-const FormField: React.FC<FormFieldProps> = ({control, name, render, className }) => (
+const FormField: React.FC<FormFieldProps> = ({
+  control,
+  name,
+  render,
+  className
+}) => (
   <Controller
     control={control}
     name={name}
-    render={({ field }) => (
-      <div className={className}>
-        {render({ field })}
-      </div>
-    )}
+    render={({ field }) => <div className={className}>{render({ field })}</div>}
   />
 )
 FormField.displayName = 'FormField'
@@ -94,7 +95,6 @@ const FormMessage: React.FC<FormMessage> = ({ className }) => {
     <div className={cn('text-sm', className)}>
       {error && <span>{error.message}</span>}
     </div>
-
   )
 }
 FormMessage.displayName = 'FormMessage'
