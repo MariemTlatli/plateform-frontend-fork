@@ -1,6 +1,6 @@
 export type User = {
   id: string
-  role: 'member' | 'instructor' | 'superAdmin'
+  role?: 'member' | 'instructor' | 'superAdmin'
   nomPrenom: string
   email?: string
   adresse: string
