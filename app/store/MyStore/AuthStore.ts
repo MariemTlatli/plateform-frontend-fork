@@ -22,7 +22,11 @@ type AuthState = {
 export const useAuthStore = create<AuthState>()(
   persist(
     set => ({
-      user: null,
+      user: {
+        id: '',
+        nomPrenom: '',
+        adresse: ''
+      },
       currentDepartment: '',
       isAuthenticated: false,
 
@@ -44,8 +48,7 @@ export const useAuthStore = create<AuthState>()(
           } = response.data.user || {} // Récupération des données de l'utilisateur
 
           const token = response.data.token
-          Cookies.set('test', token, { expires: 1 }) 
-         
+          Cookies.set('test', token, { expires: 1 })
 
           set({
             user: {
