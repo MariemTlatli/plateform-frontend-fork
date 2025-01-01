@@ -79,7 +79,9 @@ export const useAuthStore = create<AuthState>()(
           if (response.status === 200) {
             toast.success('Logout successful')
             set({ user: null, isAuthenticated: false }) // Réinitialiser l'état lors de la déconnexion
-            window.location.href = '/'
+            if (typeof window !== 'undefined') {
+              window.location.href = '/' // Rediriger après déconnexion
+            }
           }
         } catch (error) {
           console.error('Logout failed:', error)

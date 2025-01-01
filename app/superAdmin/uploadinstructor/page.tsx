@@ -63,6 +63,9 @@ const UploadPage: React.FC = () => {
       alert("Veuillez d'abord uploader un fichier")
       return
     }
+    if (typeof window !== 'undefined') {
+      console.log('window undefined')
+    }
     const confirmed = window.confirm('Voulez-vous sauvegarder ces données ?')
     if (!confirmed) {
       return

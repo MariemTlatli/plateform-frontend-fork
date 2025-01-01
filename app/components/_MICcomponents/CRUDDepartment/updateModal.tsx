@@ -59,7 +59,7 @@ const UpdateDepartement: React.FC<UpdateDepartementProps> = ({
     try {
       await updateDepartment(id, updatedDepartment) // Call the Zustand action
       alert('Department updated successfully!')
-      window.location.reload()
+     // window.location.reload()
       onRequestClose() // Close the modal after successful submission
     } catch (error) {
       console.error('Error updating the department:', error)

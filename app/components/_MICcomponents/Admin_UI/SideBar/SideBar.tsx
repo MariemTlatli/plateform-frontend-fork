@@ -20,7 +20,7 @@ export default function Sidebar({ links }) {
     console.log('Logging out')
     try {
       await logout()
-      window.location.href = '/'
+      // window.location.href = '/'
     } catch (error) {
       console.error('Logout failed:', error)
     }
