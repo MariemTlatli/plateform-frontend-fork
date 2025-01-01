@@ -17,7 +17,12 @@ const Page: React.FC = () => {
   const deleteMembersForAdmin = useMemberStore(
     state => state.deleteMembersForAdmin
   )
-
+  interface HeadCell {
+    id: string
+    numeric: boolean
+    disablePadding: boolean
+    label: string
+  }
   const [editingMember, setEditingMember] = useState<MemberForAdmin | null>(
     null
   )
@@ -37,10 +42,9 @@ const Page: React.FC = () => {
     }
   }
 
-  const headCells = [
-    {
-      /*{ id: '_id', numeric: false, disablePadding: true, label: 'ID' }*/
-    },
+  const headCells: HeadCell[] = [
+    /*{ id: '_id', numeric: false, disablePadding: true, label: 'ID' }*/
+
     {
       id: 'NomPrenom',
       numeric: false,
@@ -49,14 +53,14 @@ const Page: React.FC = () => {
     },
     { id: 'Email', numeric: false, disablePadding: false, label: 'Email' },
     { id: 'Adresse', numeric: false, disablePadding: false, label: 'Adresse' },
-    {
-      /*{
+
+    /*{
       id: 'FormattedDepartmentsIds',
       numeric: false,
       disablePadding: false,
       label: 'DepartmentIds'
     },*/
-    },
+
     {
       id: 'ImageLink',
       numeric: false,
@@ -85,7 +89,10 @@ const Page: React.FC = () => {
             title='List of Membres'
             onDelete={handleDelete}
             renderRowActions={row => (
-              <Button variant='outlined' onClick={() => handleEdit(row._id)}>
+              <Button
+                variant='outlined'
+                onClick={() => handleEdit(row._id as string)}
+              >
                 Éditer
               </Button>
             )}

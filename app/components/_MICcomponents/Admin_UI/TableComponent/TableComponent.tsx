@@ -19,7 +19,7 @@ import DeleteIcon from '@mui/icons-material/Delete'
 import FilterListIcon from '@mui/icons-material/FilterList'
 
 interface Data {
-  [key: string]: string | number
+  [key: string]: string | number | string[]
 }
 
 interface HeadCell {
@@ -89,7 +89,9 @@ const EnhancedTable: React.FC<EnhancedTableProps> = ({
 
   return (
     <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 0, margin: 0, padding: 0, borderRadius: 2 }}>
+      <Paper
+        sx={{ width: '100%', mb: 0, margin: 0, padding: 0, borderRadius: 2 }}
+      >
         <Toolbar
           className='rounded-t-md bg-gradient-to-r from-secondary to-primary text-white'
           sx={[
@@ -184,12 +186,16 @@ const EnhancedTable: React.FC<EnhancedTableProps> = ({
                     <TableRow
                       hover
                       onClick={event =>
-                        handleClick(event, row._id as string, row.Title)
+                        handleClick(
+                          event,
+                          row._id as string,
+                          row.Title.toString()
+                        )
                       }
                       role='checkbox'
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.id}
+                      key={row.id as string}
                       selected={isItemSelected}
                     >
                       {headCells.map(headCell => (

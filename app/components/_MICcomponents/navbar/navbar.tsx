@@ -11,18 +11,18 @@ const inter = Inter({ subsets: ['latin-ext'], weight: '400' })
 
 export default function Navbar() {
   const logout = useAuthStore(state => state.logout)
-  const user = useAuthStore(state => state.user) || {}
+  const user = useAuthStore(state => state.user)
   const currentDepartment = useAuthStore(state => state.currentDepartment)
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const getUserInitials = () => {
-    if (user.nomPrenom) {
-      const [firstName, lastName] = user.nomPrenom.split(' ')
-      return `${firstName.charAt(0)}${lastName.charAt(0)}`
-    }
-    return ''
-  }
+  // const getUserInitials = () => {
+  //   if (user.nomPrenom) {
+  //     const [firstName, lastName] = user.nomPrenom.split(' ')
+  //     return `${firstName.charAt(0)}${lastName.charAt(0)}`
+  //   }
+  //   return ''
+  // }
   const handleLogOut = async () => {
     try {
       await logout()
@@ -64,9 +64,9 @@ export default function Navbar() {
           >
             <span className='sr-only'>Open user menu</span>
 
-            <div className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-lg text-white'>
-              {user.nomPrenom ? getUserInitials(user.nomPrenom) : ''}
-            </div>
+            {/* <div className='flex h-10 w-10 items-center justify-center rounded-full bg-gray-500 text-lg text-white'>
+              {user.nomPrenom ? getUserInitials() : ''}
+            </div> */}
           </button>
 
           {/* Dropdown Menu */}

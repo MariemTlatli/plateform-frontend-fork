@@ -3,7 +3,7 @@ export type Assignment = {
   Title: string
   Description: string
   DueDate: string
-  Attachments: string[]
+  Attachments: string
 }
 export type State = {
   assignments: Assignment[]

@@ -73,7 +73,7 @@ export default function CreateOrUpdateAssignment() {
       Title: values.title,
       Description: values.description,
       DueDate: formattedDate,
-      Attachments: []
+      Attachments: ''
     }
 
     try {
