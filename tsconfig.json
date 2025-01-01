@@ -37,6 +37,7 @@
     "**/*.ts",
     "**/*.tsx",
     "components/ui/date-picker.tsx"
-, "components/ui/form.jsx", "components/ui/toggle.jsx"  ],
+, "components/ui/form.tsx"  ],
+
   "exclude": ["node_modules"]
 }
