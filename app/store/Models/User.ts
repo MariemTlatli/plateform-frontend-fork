@@ -10,5 +10,5 @@ export type User = {
 }
 
 export type State = {
-  user: User | null
+  user: User | null 
 }
