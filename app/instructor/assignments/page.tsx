@@ -41,7 +41,7 @@ const Page = () => {
         try {
           await fetchAssignments(user.DepartmentId)
         } catch (error) {
-          toast.error('Failed to fetch assignments')
+          // toast.error('Failed to fetch assignments')
         }
       }
     }
