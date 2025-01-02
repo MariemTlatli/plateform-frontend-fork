@@ -37,7 +37,7 @@ const Page = () => {
       loadSessions(departmentId)
     }
    
-  }, [departmentId, fetchSessions])
+  }, [])
 
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage

@@ -6,58 +6,44 @@ import dayGridPlugin from '@fullcalendar/daygrid'
 import { useSearchParams } from 'next/navigation'
 import Empty from '@/mic-component/lottie_animation/Empty'
 import { parse } from 'date-fns'
-import timeGridPlugin from '@fullcalendar/timegrid';
+import timeGridPlugin from '@fullcalendar/timegrid'
 import axiosInstance from '@/axiosInstance*'
 import Layout from '@/mic-component/Admin_UI/Layout/Layout'
 
-type Session = {
-  _id: string
-  Title: string
-  Date: string
-  Instructor: string
-  Room: string
-  Description: string
-}
-
 const Page = () => {
- 
-  const [selectedEvent, setSelectedEvent] = useState<any>(null) 
-  const [sessions, setSessions] = useState([])
+  // const [selectedEvent, setSelectedEvent] = useState<any>(null)
+  // const [sessions, setSessions] = useState([])
 
+  // useEffect(() => {
+  //   const loadSessions = async () => {
+  //       try {
+  //           const response = await axiosInstance.get(
+  //           '/session/all'
+  //           )
+  //           setSessions(response.data)
 
+  //         } catch (error) {
+  //           console.error("Erreur lors de l'upload du fichier", error)
+  //           alert("Erreur lors de l'upload du fichier")
+  //         }
+  //   }
 
-  useEffect(() => {
-    const loadSessions = async () => {
-        try { 
-            const response = await axiosInstance.get(
-            '/session/all'
-            )
-            setSessions(response.data)
-            
-          } catch (error) {
-            console.error("Erreur lors de l'upload du fichier", error)
-            alert("Erreur lors de l'upload du fichier")
-          }
-    }
+  //   loadSessions()
 
-    loadSessions()
-   
-  }, [])
+  // }, [])
 
+  // const handleEventClick = (info: any) => {
+  //   setSelectedEvent(info.event.extendedProps)
+  // }
 
-
-  const handleEventClick = (info: any) => {
-    setSelectedEvent(info.event.extendedProps)
-  }
-
-  const handleCloseModal = () => {
-    setSelectedEvent(null)
-  }
+  // const handleCloseModal = () => {
+  //   setSelectedEvent(null)
+  // }
 
   return (
     <Layout>
-    
-      {sessions.length > 0 ? (
+      <div> à implementer plus tard</div>
+      {/* {sessions.length > 0 ? (
         <Box
           sx={{
             padding: 1,
@@ -105,7 +91,7 @@ const Page = () => {
         </div>
       )}
 
-      {/* Modal pour afficher les détails de l'événement */}
+      
       <Modal
         open={!!selectedEvent}
         onClose={handleCloseModal}
@@ -147,44 +133,44 @@ const Page = () => {
           )}
         </Box>
       </Modal>
-    
+     */}
     </Layout>
   )
 }
-function renderEventContent(eventInfo: any) {
-  const { event } = eventInfo
-  const { title, start } = event
-  const { instructor, room, description } = event.extendedProps
-  return (
-    <Box
-      className="rounded-md bg-gradient-to-r from-secondary to-primary text-white text-center p-2"
-      sx={{
-        width: '96%',
-        overflow: 'auto',
-        justifyContent: 'center',
-        padding: 1,
-        backgroundColor: 'rgba(255, 255, 255, 0.9)',
-        borderRadius: 2,
-        boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
-      }}
-    >
-      <Typography variant='body2' fontWeight='bold'>
-        {title}
-      </Typography>
-      <Typography variant='body2'>
-        <strong>{new Date(start).toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false
-        })}</strong>
-      </Typography>
-      <Typography variant='body2'>
-        <strong>Room:</strong> {room}
-      </Typography>
-     
-    </Box>
-  )
-}
+// function renderEventContent(eventInfo: any) {
+//   const { event } = eventInfo
+//   const { title, start } = event
+//   const { instructor, room, description } = event.extendedProps
+//   return (
+//     <Box
+//       className="rounded-md bg-gradient-to-r from-secondary to-primary text-white text-center p-2"
+//       sx={{
+//         width: '96%',
+//         overflow: 'auto',
+//         justifyContent: 'center',
+//         padding: 1,
+//         backgroundColor: 'rgba(255, 255, 255, 0.9)',
+//         borderRadius: 2,
+//         boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
+//       }}
+//     >
+//       <Typography variant='body2' fontWeight='bold'>
+//         {title}
+//       </Typography>
+//       <Typography variant='body2'>
+//         <strong>{new Date(start).toLocaleTimeString('en-US', {
+//           hour: '2-digit',
+//           minute: '2-digit',
+//           second: '2-digit',
+//           hour12: false
+//         })}</strong>
+//       </Typography>
+//       <Typography variant='body2'>
+//         <strong>Room:</strong> {room}
+//       </Typography>
+
+//     </Box>
+//   )
+// }
 
 export default Page
