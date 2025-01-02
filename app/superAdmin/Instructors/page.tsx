@@ -11,7 +11,7 @@ import EnhancedTable from '@/mic-component//Admin_UI/TableComponent/TableCompone
 import Button from '@mui/material/Button'
 import { useInstructorStore } from '@/store/MyStore/InstructorStore'
 
-const InstructorsTable = () => {
+export default function  Page ()  {
   const {
     instructors,
     fetchInstructors,
@@ -157,4 +157,4 @@ const InstructorsTable = () => {
   )
 }
 
-export default InstructorsTable
+

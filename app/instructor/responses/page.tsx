@@ -20,7 +20,7 @@ import Empty from '@/mic-component/lottie_animation/Empty'
 import ResponseStatusSelect from '@/mic-component/Instructor_UI/ResponseStatusSelect/ResponseStatusSelect'
 import { toast } from 'react-hot-toast'
 
-const Page = () => {
+export default function  Page (){
   const [assignmentId, setAssignmentId] = useState<string | null>(null)
   const { responses, fetchResponses } = useResponseStore()
   const [expanded, setExpanded] = useState<string | false>(false)
@@ -369,4 +369,3 @@ const Page = () => {
   )
 }
 
-export default Page

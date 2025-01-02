@@ -69,13 +69,9 @@ export default function UploadPage() {
     formData.append('file', selectedFile)
 
     try {
-      const response = await axiosInstance.post(
-        '/test/upload',
-        formData,
-        {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        }
-      )
+      const response = await axiosInstance.post('/test/upload', formData, {
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
 
       const validatedData = jsonDataSchema.parse(response.data)
       setJsonData(validatedData)

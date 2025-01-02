@@ -7,7 +7,7 @@ import { useMemberStore } from '@/store/MyStore/MembersStore'
 import Member_card from '@/mic-component/Member_card/Member_card'
 import PaginationComponent from '@/mic-component/PaginationComponent/PaginationComponent'
 
-const Page = () => {
+export default function Page() {
   const members = useMemberStore(state => state.members)
   const fetchMembers = useMemberStore(state => state.fetchMembers)
   const user = useAuthStore(state => state.user)
@@ -67,5 +67,3 @@ const Page = () => {
     </Container>
   )
 }
-
-export default Page
