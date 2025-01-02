@@ -1,4 +1,5 @@
-const url = process.env.NEXT_PUBLIC_API_BASE_URL
+// const url = process.env.NEXT_PUBLIC_API_BASE_URL
+const url = 'http://localhost:4000/api'
 export const ENDPOINTS = {
   // DEPARTMENTS
   GET_DEPARTMENTS_NAMES_IDS: `${url}/department/names-ids`,
@@ -18,12 +19,10 @@ export const ENDPOINTS = {
     `${url}/instructor/delete/${instructorId}`,
   GET_INSTRUCTORS_NAMES: `${url}/instructor/get-instructors-names`,
   // Members :
-  FETCH_MEMBERS: (departmentId: string) =>
-    `${url}/member/all/${departmentId}`,
+  FETCH_MEMBERS: (departmentId: string) => `${url}/member/all/${departmentId}`,
   FETCH_MEMBERS_FOR_ADMIN: `${url}/member/admin/all`,
   GET_MEMBERS_NAMES: `${url}/member/get-members-names`,
-  UPDATE_MEMBER_FOR_ADMIN: (idUser: string) =>
-    `${url}/member/update/${idUser}`,
+  UPDATE_MEMBER_FOR_ADMIN: (idUser: string) => `${url}/member/update/${idUser}`,
   DELETE_MEMBER_FOR_ADMIN: (idUser: string | number) =>
     `${url}/member/delete/${idUser}`,
   ADD_MEMBER_FOR_ADMIN: `${url}/member/create`,
@@ -52,7 +51,7 @@ export const ENDPOINTS = {
   FETCH_MESSAGES_FOR_CHAT: (Chat_Id: string) =>
     `${url}/chats/getChat/${Chat_Id}`,
   CREATE_MESSAGES_IN_CHAT: () => `${url}/chats/addMessage`,
- 
+
   // Assignments :
   FETCH_ASSIGNMENTS: (departmentId: string) =>
     `${url}/assignment/department/${departmentId}`,
@@ -60,7 +59,7 @@ export const ENDPOINTS = {
     `${url}/assignment/department/${departmentId}/addAssignment`,
   UPDATE_ASSIGNMENT: (assignmentId: string) =>
     `${url}/assignment/updateAssignment/${assignmentId}`,
-  DELETE_ASSIGNMENT: (assignmentId: string , departmentId: string) =>
+  DELETE_ASSIGNMENT: (assignmentId: string, departmentId: string) =>
     `${url}/assignment/deleteAssignment/${assignmentId}/${departmentId}`,
   FETCH_ALL_Assignements: () => `${url}/assignment/getAssignments`
 }
