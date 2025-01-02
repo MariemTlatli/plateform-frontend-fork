@@ -49,7 +49,7 @@ const Page: React.FC = () => {
       setAssignmentId(selectedId)
       fetchData()
     }
-  }, [selectedId])
+  }, [])
 
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
