@@ -19,7 +19,7 @@ import DeleteAssignmentModal from '@/mic-component/Instructor_UI/AssignmentDelet
 import AssignmentModal from '@/mic-component/Instructor_UI/AssignmentModal/AssignmentModal'
 import { toast } from 'react-hot-toast'
 
-const Page = () => {
+export default function  Page ()  {
   const router = useRouter()
   const assignments = useAssignmentStore(state => state.assignments)
   const fetchAssignments = useAssignmentStore(state => state.fetchAssignments)
@@ -212,5 +212,3 @@ const Page = () => {
     </>
   )
 }
-
-export default Page

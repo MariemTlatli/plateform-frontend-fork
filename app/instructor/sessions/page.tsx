@@ -23,7 +23,7 @@ import PaginationComponent from '@/mic-component/PaginationComponent/PaginationC
 import SessionForm from '@/mic-component/sessionForm/SessionForm'
 import EnhancedTable from '@/mic-component/Admin_UI/TableComponent/TableComponent'
 
-const Page = () => {
+export default function  Page ()   {
   const sessions = useSessionsStore(state => state.sessions)
   const fetchSessions = useSessionsStore(state => state.fetchSessions)
   const user = useAuthStore(state => state.user)
@@ -190,4 +190,3 @@ const Page = () => {
   )
 }
 
-export default Page

@@ -11,7 +11,7 @@ import Accordion from '@/mic-component/InstructorAccordion/Accordion'
 import throttle from 'lodash.throttle'
 import { useAuthStore } from '@/store/MyStore/AuthStore'
 
-const Page = () => {
+export default function Page() {
   const assignments = useAssignmentStore(state => state.assignments)
   const fetchAssignments = useAssignmentStore(state => state.fetchAssignments)
   const searchParams = useSearchParams()
@@ -82,4 +82,4 @@ const Page = () => {
   )
 }
 
-export default Page
+

@@ -7,7 +7,7 @@ import { useSearchParams } from 'next/navigation'
 import Empty from '@/mic-component/lottie_animation/Empty'
 import { useSessionsStore } from '@/store/MyStore/SessionsStore'
 import { parse } from 'date-fns'
-import timeGridPlugin from '@fullcalendar/timegrid';
+import timeGridPlugin from '@fullcalendar/timegrid'
 
 type Session = {
   _id: string
@@ -18,9 +18,9 @@ type Session = {
   Description: string
 }
 
-const Page = () => {
-  const sessions = useSessionsStore((state) => state.sessions)
-  const fetchSessions = useSessionsStore((state) => state.fetchSessions)
+export default function Page() {
+  const sessions = useSessionsStore(state => state.sessions)
+  const fetchSessions = useSessionsStore(state => state.fetchSessions)
 
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage] = useState(5)
@@ -36,7 +36,6 @@ const Page = () => {
     if (departmentId) {
       loadSessions(departmentId)
     }
-   
   }, [])
 
   const indexOfLastItem = currentPage * itemsPerPage
@@ -67,7 +66,7 @@ const Page = () => {
         width: '70%',
         display: 'flex',
         justifyContent: 'center',
-        alignItems: 'center',
+        alignItems: 'center'
       }}
     >
       {currentSessions && currentSessions.length > 0 ? (
@@ -77,42 +76,37 @@ const Page = () => {
             backgroundColor: 'rgba(255, 255, 255, 0.8)',
             borderRadius: 2,
             width: '70%',
-            height: '70%',
+            height: '70%'
           }}
         >
           <FullCalendar
-            plugins={[dayGridPlugin , timeGridPlugin]}
-            initialView="dayGridMonth"
+            plugins={[dayGridPlugin, timeGridPlugin]}
+            initialView='dayGridMonth'
             weekends={true}
             headerToolbar={{
               right: 'prev,next today',
               center: 'title',
-              left: 'dayGridMonth,timeGridWeek,timeGridDay', 
+              left: 'dayGridMonth,timeGridWeek,timeGridDay'
             }}
-            
-            events={currentSessions.map((session) => ({
+            events={currentSessions.map(session => ({
               title: session.Title || 'Untitled Session',
-              start: parse(
-                session.Date,
-                'dd/MM/yyyy HH:mm:ss',
-                new Date()
-              ),
+              start: parse(session.Date, 'dd/MM/yyyy HH:mm:ss', new Date()),
               extendedProps: {
                 id: session._id,
-                title: session.Title  || 'Untitled Session',
+                title: session.Title || 'Untitled Session',
                 instructor: session.Instructor || 'Unknown Instructor',
                 room: session.Room || 'No Room Assigned',
-                description: session.Description || 'No description available',
-              },
+                description: session.Description || 'No description available'
+              }
             }))}
-            eventContent={(eventInfo) => renderEventContent(eventInfo)}
+            eventContent={eventInfo => renderEventContent(eventInfo)}
             eventClick={handleEventClick} // Gestionnaire pour le clic sur un événement
           />
         </Box>
       ) : (
         <div>
           <Empty />
-          <Typography variant="h5" className="text-center">
+          <Typography variant='h5' className='text-center'>
             No sessions available
           </Typography>
         </div>
@@ -122,8 +116,8 @@ const Page = () => {
       <Modal
         open={!!selectedEvent}
         onClose={handleCloseModal}
-        aria-labelledby="event-modal-title"
-        aria-describedby="event-modal-description"
+        aria-labelledby='event-modal-title'
+        aria-describedby='event-modal-description'
       >
         <Box
           sx={{
@@ -133,27 +127,35 @@ const Page = () => {
             transform: 'translate(-50%, -50%)',
             width: 400,
             bgcolor: 'background.paper',
-           
+
             boxShadow: 24,
-            
-            borderRadius: 4,
+
+            borderRadius: 4
           }}
         >
           {selectedEvent && (
             <>
-              <Typography className="rounded-md bg-gradient-to-r from-secondary to-primary text-white text-center p-2" id="event-modal-title" variant="h6" component="h2">
+              <Typography
+                className='rounded-md bg-gradient-to-r from-secondary to-primary p-2 text-center text-white'
+                id='event-modal-title'
+                variant='h6'
+                component='h2'
+              >
                 {selectedEvent.title || 'Untitled Session'}
               </Typography>
-              <Typography id="event-modal-description"sx={{ pl: 4 , pr: 4 , mt: 2 }}>
+              <Typography
+                id='event-modal-description'
+                sx={{ pl: 4, pr: 4, mt: 2 }}
+              >
                 <strong>Instructor:</strong> {selectedEvent.instructor}
               </Typography>
-              <Typography sx={{ pl: 4 , pr: 4 }} >
+              <Typography sx={{ pl: 4, pr: 4 }}>
                 <strong>Room:</strong> {selectedEvent.room}
               </Typography>
-              <Typography sx={{ pl: 4 , pr: 4 }} >
+              <Typography sx={{ pl: 4, pr: 4 }}>
                 <strong>Duration :</strong> 2 hours
               </Typography>
-              <Typography sx={{ pl: 4 , pr: 4 , mb : 2}} >
+              <Typography sx={{ pl: 4, pr: 4, mb: 2 }}>
                 <strong>Description:</strong> {selectedEvent.description}
               </Typography>
             </>
@@ -169,7 +171,7 @@ function renderEventContent(eventInfo: any) {
   const { instructor, room, description } = event.extendedProps
   return (
     <Box
-      className="rounded-md bg-gradient-to-r from-secondary to-primary text-white text-center p-2"
+      className='rounded-md bg-gradient-to-r from-secondary to-primary p-2 text-center text-white'
       sx={{
         width: '96%',
         overflow: 'auto',
@@ -184,19 +186,18 @@ function renderEventContent(eventInfo: any) {
         {title}
       </Typography>
       <Typography variant='body2'>
-        <strong>{new Date(start).toLocaleTimeString('en-US', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit',
-          hour12: false
-        })}</strong>
+        <strong>
+          {new Date(start).toLocaleTimeString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+          })}
+        </strong>
       </Typography>
       <Typography variant='body2'>
         <strong>Room:</strong> {room}
       </Typography>
-     
     </Box>
   )
 }
-
-export default Page
