@@ -3,7 +3,7 @@ export type User = {
   role?: 'member' | 'instructor' | 'superAdmin'
   nomPrenom: string
   email?: string
-  adresse: string
+  adresse?: string
   imageLink?: string
   DepartmentIds?: string[]
   DepartmentId?: string

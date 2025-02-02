@@ -1,15 +1,16 @@
 'use client'
-
 import React, { useEffect, useState } from 'react'
-
+import dynamic from 'next/dynamic'
 import { useRouter } from 'next/navigation'
-import DepartmentCard from '@/mic-component/departmentCard/DepartmentCard'
 import { useAuthStore } from '@/store/MyStore/AuthStore'
 import { ENDPOINTS } from '@/store/constants/api'
 import axiosInstance from '@/axiosInstance*'
 import { Button } from '@mui/material'
 import { User } from '@/store/Models/User'
 import throttle from 'lodash.throttle'
+
+const DepartmentCard = dynamic(() =>  import('@/mic-component/departmentCard/DepartmentCard'))
+
 
 interface Department {
   _id: string

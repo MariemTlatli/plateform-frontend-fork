@@ -15,10 +15,9 @@ import { useAuthStore } from '@/store/MyStore/AuthStore'
 import PaginationComponent from '@/mic-component/PaginationComponent/PaginationComponent'
 import AssignmentCardForInstructor from '@/mic-component/Instructor_UI/AssignmentCardForInstructor/AssignmentCardForInstructor'
 import EnhancedTable from '@/mic-component/Admin_UI/TableComponent/TableComponent'
-import DeleteAssignmentModal from '@/mic-component/Instructor_UI/AssignmentDeleteModalForInstructor/AssignmentDeleteModalForInstructor'
-import AssignmentModal from '@/mic-component/Instructor_UI/AssignmentModal/AssignmentModal'
-import { toast } from 'react-hot-toast'
 
+import { toast } from 'react-hot-toast'
+import dynamic from 'next/dynamic'
 export default function Page() {
   const router = useRouter()
   const assignments = useAssignmentStore(state => state.assignments)
@@ -26,8 +25,10 @@ export default function Page() {
   const deleteAssignment = useAssignmentStore(state => state.deleteAssignment)
   const user = useAuthStore(state => state.user)
 
-  const [currentPage, setCurrentPage] = useState(1)
-  const [itemsPerPage] = useState(5)
+  const AssignmentModal = dynamic(() => import('@/mic-component/Instructor_UI/AssignmentModal/AssignmentModal'))
+  const DeleteAssignmentModal = dynamic(() => import('@/mic-component/Instructor_UI/AssignmentDeleteModalForInstructor/AssignmentDeleteModalForInstructor'))           
+  const [currentPage, setCurrentPage] = useState(1)             
+  const [itemsPerPage] = useState(5)          
   const [editingAssignment, setEditingAssignment] = useState(null)
   const [openUpdateDialog, setOpenUpdateDialog] = useState(false)
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false)
@@ -35,16 +36,16 @@ export default function Page() {
   const [openAssignmentModal, setOpenAssignmentModal] = useState(false)
   const [selectedAssignment, setSelectedAssignment] = useState(null)
 
-  useEffect(() => {
-    const loadAssignments = async () => {
-      if (user && user.DepartmentId) {
-        try {
-          await fetchAssignments(user.DepartmentId)
-        } catch (error) {
-          // toast.error('Failed to fetch assignments')
-        }
+  const loadAssignments = async () => {
+    if (user && user.DepartmentId) {
+      try {
+        await fetchAssignments(user.DepartmentId)
+      } catch (error) {
+        // toast.error('Failed to fetch assignments')
       }
     }
+  }
+  useEffect(() => {
     loadAssignments()
   }, [])
 
